@@ -16,7 +16,8 @@ connectDB();
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "http://localhost:4173"
+        "http://localhost:4173",
+        "https://secure-storage-frontend.vercel.app"
     ],
     credentials: true
 }));
