@@ -21,6 +21,7 @@ app.use(cors({
     credentials: true
 }));
 
+
 // ✅ Google popup compatibility (optional cosmetic fix)
 app.use((req, res, next) => {
     res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
