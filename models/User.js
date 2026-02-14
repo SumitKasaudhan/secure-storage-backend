@@ -1,10 +1,17 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
         unique: true,
+        lowercase: true,
+        trim: true,
+        validate: {
+            validator: (value) => validator.isEmail(value),
+            message: "Invalid email format"
+        }
     },
 
     password: {
@@ -12,9 +19,13 @@ const userSchema = new mongoose.Schema({
         required: function () {
             return !this.googleId;
         },
+        minlength: 8
     },
 
-    googleId: String,
+    googleId: {
+        type: String,
+        default: null
+    },
 
     name: {
         type: String,
